@@ -1,0 +1,38 @@
+{% extends 'student/base.html' %}
+
+
+{% block content %}
+<div class="content-body" style="min-height: 788px;">
+    <!-- row -->
+    <div class="container-fluid">
+		    
+        <div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4>Менің сабақтарым</h4>
+                </div>
+            </div>
+        </div>
+		
+		<div class="row">
+            {% for les in mylesson %}
+			<div class="col-xl-3 col-xxl-4 col-lg-4 col-md-6 col-sm-6">
+				<div class="card">
+					<img class="img-fluid" src="{{les.lesson.image.url}}" alt="">
+					<div class="card-body">
+						<h4>{{les.lesson.title}}</h4>
+						<!-- <ul class="list-group mb-3 list-group-flush">
+							<li class="list-group-item px-0 d-flex justify-content-between">
+								<span class="mb-0">Professor :</span><strong>{{les.lesson.author}}</strong></li>
+							
+						</ul> -->
+						<a href="{% url 'universystem:MyLessonsDetailView' id=les.id %}" class="btn btn-primary">Ары қарай оқу</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		
+    </div>
+</div>
+{% endblock %}  

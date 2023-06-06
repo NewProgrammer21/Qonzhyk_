@@ -1,0 +1,55 @@
+{% extends 'student/base.html' %}
+
+{% block content %}
+<div class="course-details-area ">
+    <div class="container">
+        <div class="content-body" style="min-height: 788px;">
+            <div class="container-fluid">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Incoming messages</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- row -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="email-left-box px-0 mb-5">
+                                    <div class="mail-list mt-4">
+                                        <a href="email-inbox.html" class="list-group-item active"><i class="fa fa-inbox font-18 align-middle mr-2"></i> inbox </a>
+                                        <a href="{% url 'universystem:StudentAddInboxView' %}" class="list-group-item"><i class="fa fa-paper-plane font-18 align-middle mr-2"></i>Write</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="course-instructors">
+                                    <div class="instructors-heading">
+                                        <div class="instructors-img w-img">
+                                            <a href="instructor-profile.html"><img src="{{ message.sender.photo.url}}" alt="image not found">{{ message.sender}}</a>
+                                        </div>
+                                        <div class="instructors-body">
+                                            <h5><a href="instructor-profile.html">{{lesson.author.username}}</a></h5>
+                                            <b>Message sent date:</b> {{ message.sent}}
+                                            <p><b>Message text:</b> {{ message.message}}</p>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}  
+
+ 

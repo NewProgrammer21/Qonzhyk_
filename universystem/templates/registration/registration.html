@@ -1,0 +1,105 @@
+{% extends 'registration/base.html' %}
+<style>
+    .bootstrap-select .btn{
+        display: none;
+    }
+</style>
+{% load static %}
+{% block content %}
+<main>
+    <section class="p-0 d-flex align-items-center position-relative overflow-hidden">
+    
+        <div class="container-fluid">
+            <div class="row">
+  
+                <!-- Right -->
+                <div class="col-12 col-lg-12 m-auto">
+                    <div class="row my-5">
+                        <div class="col-sm-10 col-xl-8 m-auto">
+                            
+                            <h1 class="fs-2">Registration</h1>
+                           
+                            <form action="" method="POST" class="login100-form validate-form" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {% load widget_tweaks%}
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group text-left">
+                                        <label><strong>Login:</strong></label>
+                                        {{ registration_form.username|add_class:"form-control" }}
+                                    </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group text-left">
+                                        <label><strong>Password: </strong></label>
+                                        {{ registration_form.password|add_class:"form-control" }}
+                                    </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                         <div class="form-group text-left">
+                                        <label><strong>Repeat password: </strong></label>
+                                        {{ registration_form.password2|add_class:"form-control" }}
+                                    </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group text-left">
+                                        <label><strong>Username:</strong></label>
+                                        {{ registration_form.first_name|add_class:"form-control" }}
+                                    </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group text-left">
+                                        <label><strong>Email address:</strong></label>
+                                        {{ registration_form.email|add_class:"form-control" }}
+                                    </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group text-left">
+                                        <label><strong>Additional Information:</strong></label>
+                                        {{ profile_form.information|add_class:"form-control" }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group text-left">
+                                        <label><strong>Address:</strong></label>
+                                        {{ profile_form.adress|add_class:"form-control" }}
+                                    </div>
+                                    <div class="form-group text-left">
+                                        <label><strong>Avatar:</strong></label>
+                                        {{ profile_form.photo|add_class:"form-control" }}
+                                    </div>
+                                    <div class="form-group text-left">
+                                        <label><strong>Roles:</strong></label>
+                                        {{ profile_form.roles|add_class:"form-control"}}
+                                    </div>
+                                </div> 
+                                    
+                                    
+                                   
+                                    
+                                    
+                                    
+                            
+                                   <div class="sing-buttom mb-20 mt-4">
+                                        <button type="submit" class="sing-btn">Save</button>
+                                    </div>
+                                                          
+                                  
+                                </form>
+                            <!-- Form END -->
+
+                            <!-- Social buttons and divider -->
+
+                            <!-- Sign up link -->
+                            <div class="mt-4 text-center">
+                                <span><a href="{% url 'universystem:login' %}">If you have a password</a></span>
+                            </div>
+                        </div>
+                    </div> <!-- Row END -->
+                </div>
+            </div> <!-- Row END -->
+        </div>
+    </section>
+</main>
+
+
+{% endblock %}

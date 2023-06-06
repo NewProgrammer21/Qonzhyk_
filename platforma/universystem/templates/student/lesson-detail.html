@@ -1,0 +1,135 @@
+{% extends 'student/base.html' %}
+{% block content %}
+<div class="hero-arera course-item-height" data-background="assets/img/slider/course-slider.jpg" style="background-image: url(&quot;assets/img/slider/course-slider.jpg&quot;);">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="hero-course-1-text">
+                    <h2>Read more </h2>
+                </div>
+                <div class="course-title-breadcrumb">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Lectures</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ lesson.title }}</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="course-detalis-area pb-70">
+    <div class="container">
+        <div class="row">
+            <div class=" col-xxl-8 col-xl-8">
+                <div class="course-detalis-wrapper mb-30">
+                    <iframe id="ytplayer" type="text/html" style="width: 100%;height: 400px; border: none;" src="{{ lesson.youtube }}" allowfullscreen></iframe>
+                    <div class="course-heading mb-20">
+                        <h2>{{ lesson.title }}</h2>
+                    </div>
+                    <div class="course-description pb-30">
+                        <p>{{ lesson.information}}.</p>
+                    </div>
+                    
+                    <div class="course-detalis-reviews pt-15">
+                        <div class="course-detalis-reviews-tittle">
+                            <h3>List of comments</h3>
+                        </div>
+                        {% for coment in coments %}
+						{% if coment %}
+	                        <div class="course-review-item mb-30">
+	                            
+	                            <div class="course-review-list">
+	                                <h5><a href="#">{{coment.name}}</a></h5>
+	                                <div class="course-start-icon">
+	                                    <i class="fas fa-star"></i>
+	                                    <i class="fas fa-star"></i>
+	                                    <i class="fas fa-star"></i>
+	                                    <i class="fas fa-star"></i>
+	                                    <i class="fas fa-star"></i>
+	                                    <span>{{ coment.created }}</span>
+	                                </div>
+	                                <p>{{ coment.text }}</p>
+	                            </div>
+	                        </div>
+                        	{% else %}
+                               There are no comments
+                            {% endif %}
+                        {% endfor %}
+                        
+                    </div>
+                    
+                    <div class="webinar-registration">
+                        <h3 class="mb-25">Add comments</h3>
+                        <div class="webinar-registration-form">
+                            <form class="w-100"  method="POST" action="">
+											{% csrf_token %}
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="contact-from-input mb-20">
+                                            <input type="text" placeholder="Name" name="{{ comment_form.name.name }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12">
+                                        <div class="contact-from-input mb-20">
+                                        	<textarea  rows="1" placeholder="Opinion..." name="{{ comment_form.text.name }}"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="colxl-2 ">
+                                        <div class="cont-btn mb-20">
+                                            <button type="submit" class="cont-btn">Send</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-8 col-md-8">
+                <div class="course-video-widget">
+                    <div class="course-widget-wrapper mb-30">
+                        
+                        <div class="course-video-price">
+                            <span>Additional Information</span>
+                        </div>
+                        <div class="course-video-body">
+                            <ul>
+                                
+                                
+                                <li class="d-flex justify-content-between">
+										<span class="h6 fw-light mb-0"><i class="fas fa-fw fa-book-open text-primary"></i>Category:</span>
+										<span>{{ lesson.course}}</span>
+									</li>
+									<li class=" d-flex justify-content-between">
+										<span class="h6 fw-light mb-0"><i class="fas fa-fw fa-clock text-primary"></i>Date:</span>
+										<span>{{ lesson.created}}</span>
+									</li>
+									<li class="d-flex justify-content-between">
+										<span class="h6 fw-light mb-0"><i class="fas fa-fw fa-medal text-primary"></i>Document:</span>
+										<span><a href="{{ lesson.document.url}}" download="">Download</a></span>
+									</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-instructors">
+                    <h3>Teacher</h3>
+                    <div class="instructors-heading">
+                        <div class="instructors-img w-img">
+                            <a href="instructor-profile.html"><img src="{{lesson.author.profile.photo.url}}" alt="image not found"></a>
+                        </div>
+                        <div class="instructors-body">
+                            <h5><a href="instructor-profile.html">{{lesson.author.username}}</a></h5>
+                            
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}  

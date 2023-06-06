@@ -1,0 +1,67 @@
+{% extends 'student/base.html' %}
+{% block content %}
+<div class="content-body" style="min-height: 788px;">
+    <!-- row -->
+    <div class="container-fluid">
+		    
+        <div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4>Сабақ туралы ақпарат</h4>
+                </div>
+            </div>
+            <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="">Басты бет</a></li>
+                    <li class="breadcrumb-item"><a href="">Сабақтар тізімі</a></li>
+                    <li class="breadcrumb-item active"><a href="">{{ lesson.title }}</a></li>
+                </ol>
+            </div>
+        </div>
+		
+		<div class="row">
+			<div class="col-xl-3 col-xxl-4 col-lg-4">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="card">
+							<img class="img-fluid" src="{{ mylesson.lesson.author.profile.photo.url }}" alt="">
+							<div class="card-body">
+								<h4 class="mb-0">{{ mylesson.lesson.author.username }}</h4>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-header">
+								<h2 class="card-title">Санаттар</h2>
+							</div>
+							<div class="card-body pb-0">
+								<p>{{ mylesson.lesson.course}}</p>
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item d-flex px-0 justify-content-between">
+										<strong>Кұні:</strong>
+										<span class="mb-0">{{ mylesson.lesson.created}}</span>
+									</li>
+									<li class="list-group-item d-flex px-0 justify-content-between">
+										<strong>Құжат</strong>
+										<span class="mb-0"><a href="{{ mylesson.lesson.document.url}}" download="">Жүктеу</a></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-9 col-xxl-8 col-lg-8">
+				<div class="card">
+					<div class="card-body">
+						<iframe id="ytplayer" type="text/html" style="width: 100%;height: 400px; border: none;" src="{{ mylesson.lesson.youtube }}" allowfullscreen></iframe>
+						<p>{{ mylesson.lesson.information}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+    </div>
+</div>
+{% endblock %}  
